@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-Search Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="script.js" defer></script>
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    
+    <div class="login-container">
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+            <h2>Eco-Search</h2>
+        </div>
+        
+        <form id="loginForm">
+            <div class="input-group">
+                <input type="email" class="input-field" id="email" placeholder=" " required>
+                <label class="input-label">Email Address</label>
+            </div>
+            
+            <div class="input-group">
+                <input type="password" class="input-field" id="password1" placeholder=" " required>
+                <label class="input-label">Password</label>
+            </div>
+            <div class="input-group">
+                <input type="password" class="input-field" id="password2" placeholder=" " required>
+                <label class="input-label">Confirm Password</label>
+            </div>
+            <button type="submit" class="login-button" id="submittype">Sign Up</button>
+        </form>
+        
+        <div class="alternative-links">
+            <a href="/Login/index.html">Login</a>
+            <span>•</span>
+            <a href="/Reset/index.html">Reset Password</a>
+        </div>
+    </div>
+</body>
+</html>

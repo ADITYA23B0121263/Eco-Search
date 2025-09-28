@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoSearch - Discover Sustainable Products</title>
+    <link rel="stylesheet" href="prototype4.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <div class="logo">
+          <div class="logo-container">
+            <svg
+              style="color: #10b981; width: 32px; height: 32px"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="logo-icon"
+            >
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+              ></path>
+            </svg>
+            <span class="logo-text">Eco-Search</span>
+          </div>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#products">PRODUCTS</a></li>
+            <li><a href="#education">EDUCATIONAL CONTENT</a></li>
+            <li><a href="#brands">BRAND SPOTLIGHTS</a></li>
+            <li><a href="#about">ABOUT US</a></li>
+            <li><a href="/Login/index.html">USER</a></li>
+          </ul>
+        </nav>
+        <div class="header-right">
+          <div class="search-bar">
+            <input type="text" placeholder="Search eco-products..." />
+            <button>Search</button>
+          </div>
+          <div class="cart-icon">
+            <span class="material-icons">shopping_cart</span>
+            <span class="cart-count">0</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Add this CSS -->
+    <style>
+      .header-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 2rem;
+        background-color: #006d77;
+        color: white;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 8px; /* Space between logo and text */
+      }
+
+      .logo-text {
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        white-space: nowrap; /* Prevents text from wrapping */
+        display: inline-block;
+        margin-left: 4px;
+      }
+
+      .logo-icon {
+        color: white;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      /* Ensure the logo section doesn't wrap */
+      .logo {
+        display: flex;
+        align-items: center;
+        min-width: fit-content;
+        margin-right: 20px;
+      }
+
+      nav ul {
+        display: flex;
+        gap: 2rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 12px;
+        white-space: nowrap;
+        transition: color 0.3s;
+      }
+
+      nav ul li a:hover {
+        color: #e9ecef;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .search-bar {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .search-bar input {
+        padding: 0.5rem;
+        border: none;
+        border-radius: 4px;
+      }
+
+      .search-bar button {
+        padding: 0.5rem 1rem;
+        background-color: #ffb703;
+        border: none;
+        border-radius: 4px;
+        color: #2b2d42;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .search-bar button:hover {
+        background-color: #fb8500;
+      }
+
+      .cart-icon {
+        position: relative;
+        cursor: pointer;
+      }
+
+      .cart-count {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background-color: #ffb703;
+        color: #2b2d42;
+        border-radius: 50%;
+        padding: 2px 6px;
+        font-size: 12px;
+      }
+
+      @media (max-width: 1200px) {
+        .header-content {
+          flex-wrap: wrap;
+          gap: 1rem;
+        }
+
+        nav ul {
+          gap: 1rem;
+        }
+      }
+    </style>
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar">
+      <div class="cart-header">
+        <h3>Shopping Cart</h3>
+        <button class="close-cart">&times;</button>
+      </div>
+      <div class="cart-items"></div>
+      <div class="cart-total">
+        <span>Total:</span>
+        <span class="total-amount">$0.00</span>
+      </div>
+      <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+    <div class="cart-overlay"></div>
+
+    <main>
+      <!-- Products Section -->
+      <section id="products">
+        <h2>Eco-Friendly Products</h2>
+        <p>
+          Explore a wide range of eco-friendly products across various
+          categories:
+        </p>
+        <div class="product-categories">
+          <a href="#fashion" class="category-card">
+            <img src="/Image/down1.jpg" alt="Fashion" />
+            <h3>Fashion</h3>
+          </a>
+          <a href="#PersonalCare" class="category-card">
+            <img src="/Image/Organic-Ingredients-Personal-Care-scaled.jpg" alt="Electronics" />
+            <h3>Personal Care</h3>
+          </a>
+          <a href="#Beverages" class="category-card">
+            <img src="/Image/maraz2-scaled.jpg" alt="Food" />
+            <h3>Organic Beverages</h3>
+          </a>
+          <a href="#home-goods" class="category-card">
+            <img src="/Image/down4.jpg" alt="Home Goods" />
+            <h3>Home Goods</h3>
+          </a>
+        </div>
+
+        <!-- Fashion Category -->
+        <div class="category-details" id="fashion">
+          <h3>Fashion</h3>
+          <p>
+            Discover sustainable fashion brands that prioritize eco-friendly
+            materials and ethical practices.
+          </p>
+          <div class="product-grid">
+            <div class="product-card">
+              <img
+                src="https://sosfromtexas.com/cdn/shop/products/soft_color_17a_700x933.jpg?v=1571438692"
+                alt="Organic Cotton T-Shirt"
+              />
+              <h4>Organic Cotton T-Shirt</h4>
+              <p>₹ 400.00</p>
+              <button
+                class="buy-button"
+                onclick="window.open('https://sosfromtexas.com/products/soft-colors-organic-cotton-crew','_blank')"
+              >
+                Buy Now
+              </button>
+            </div>
+            <div class="product-card">
+              <img
+                src="https://m.media-amazon.com/images/I/91Wzpwd+AlL._SX679_.jpg"
+                alt="Bamboo Socks"
+              />
+              <h4>Bamboo Socks</h4>
+              <p> ₹799.00</p>
+              <button
+                class="buy-button"
+                onclick="window.open('https://www.amazon.in/HEELIUM-Socks-Quarter-Odour-Free-Anti-bacterial/dp/B0792VZC6N/ref=sr_1_2_sspa?sr=8-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1', '_blank')"
+              >
+                Buy Now
+              </button>
+            </div>
+            <div class="product-card">
+              <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/1c7ff7f0-5308-4101-b2b8-6ffceb8a44cf/M+J+MVP+HBR+JKT.png" alt="Recycled Polyester Jacket" />
+              <h4>Recycled Polyester Jacket</h4>
+              <p>₹ 6,647.00</p>
+              <button class="buy-button">Buy Now</button>
+            </div>
+            <div class="product-card">
+              <img src="https://itshemp.in/wp-content/uploads/2023/02/BL139001_1-1.webp" alt="Hemp Backpack" />
+              <h4>Hemp Backpack</h4>
+              <p>₹1,945.00</p>
+              <button class="buy-button">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Personal Care -->
+        <div class="category-details" id="electronics">
+          <h3>Personal Care</h3>
+          <p>
+            Browse personal care products that are eco-friendly, energy-efficient, and made with sustainable ingredients and packaging.
+          </p>
+          <div class="product-grid">
+            <div class="product-card">
+              <img src="https://cosmix.in/cdn/shop/files/1KGStrawberryCatalogueCover.jpg?v=1735189297&width=832" alt="Solar Powered Charger" />
+              <h4>Vegan Protein Powder</h4>
+              <p>₹ 2,175.00</p>
+              <button class="buy-button" onclick="window.open('https://cosmix.in/products/no-nonsense-plant-protein-mahabaleshwar-strawberry','_blank')" >Buy Now</button>
+            </div>
+            <div class="product-card">
+              <img src="https://images-static.nykaa.com/media/catalog/product/2/a/2aa71cbNYCETA0000010_1.jpg" alt="Energy Efficient LED Bulbs" />
+              <h4>Cetaphil Skin Cleanser</h4>
+              <p>₹ 399.00</p>
+              <button class="buy-button" onclick="window.open('https://www.nykaaman.com/cetaphil-cleansing-lotion/p/22032?ptype=product&skuId=22031&utm_content=ads&utm_source=MicrosoftAds&utm_medium=SSC&utm_campaign=MS_SSC_Grooming_111124','_blank')">Buy Now</button>
+            </div>
+            <div class="product-card">
+              <img src="https://images-static.nykaa.com/media/catalog/product/8/b/8b5353d8906128101099_1.jpg" alt="Eco-Friendly Phone Case" />
+              <h4>Minimalist Face Serum</h4>
+              <p>₹ 249.00</p>
+              <button class="buy-button" onclick="window.open('https://www.nykaaman.com/minimalist-10percent-niacinamide-face-serum-with-matmarine-zinc-for-reducing-oil-blemishes/p/15022069?ptype=product&skuId=15020675','_blank')">Buy Now</button>
+            </div>
+            <div class="product-card">
+              <img src="https://files.organicharvest.in/site-images/1200x1200/1-8ai.jpg" alt="Recycled Plastic Laptop Stand" />
+              <h4>Vitamin C Kit</h4>
+              <p>₹ 449.00</p>
+              <button class="buy-button"  onclick="window.open('https://www.organicharvest.in/product/brightening-skincare-essentials.html','_blank')">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Organic Beverages -->
+        <div class="category-details" id="food">
+          <h3>Organic Beverages</h3>
+          <p>Explore eco-friendly organic beverages crafted with sustainable and natural ingredients..</p>
+          <div class="product-grid">
+            <div class="product-card">
+              <img src="https://target.scene7.com/is/image/Target/GUEST_0f390539-9b21-4f6b-9069-511a78b76a6a?wid=1200&hei=1200&qlt=80&fmt=webp" alt="Organic Quinoa" />
+              <h4>Organic Tart Cherry Juice</h4>
+              <p>₹ 699.00 </p>
+              <button class="buy-button">Buy Now</button>
+            </div>
+            <div class="product-card">
+              <img src="https://www.isayorganic.com/cdn/shop/products/2020-10-28-11-20-448814_720x.jpg?v=1736270192" alt="Fair Trade Coffee" />
+              <h4>Organic Tea</h4>
+              <p>₹ 140.00</p>
+              <button class="buy-button">Buy Now</button>
+            </div>
+            <div class="product-card">
+              <img src="https://www.isayorganic.com/cdn/shop/files/BeetrootKanji_0005_DSC_0710LoRes_720x.jpg?v=1736270324" alt="Vegan Protein Powder" />
+              <h4>Beetroot Kanji</h4>
+              <p>₹ 95.00</p>
+              <button class="buy-button">Buy Now</button>
+            </div>
+            <div class="product-card">
+              <img src="https://www.isayorganic.com/cdn/shop/files/mushroom_soup_720x.png?v=1736269899" alt="Plant-Based Snacks" />
+              <h4>Mushroom Soup Mix</h4>
+              <p>$5.99</p>
+              <button class="buy-button">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Home Goods Category -->
+        <div class="category-details" id="home-goods">
+          <h3>Home Goods</h3>
+          <p>Upgrade your home with eco-friendly home goods and appliances.</p>
+          <div class="product-grid">
+            <div class="product-card">
+              <img src="https://ik.imagekit.io/2xkwa8s1i/img/Chabhra/Mykonos/Cup-Saucer/1.jpg?tr=w-128" alt="Recycled Glassware Set" />
+              <h4>Stoneware Material</h4>
+              <p>₹ 971.00</p>
+              <button class="buy-button" onclick="window.open('https://www.wakefit.co/dinnerware/mykonos-set-of-4-cup-and-saucer/WCSMYNSWS4BL','_blank')">Buy Now</button>
+            </div>
+            <div class="product-card">
+              <img src="https://5.imimg.com/data5/SELLER/Default/2024/10/460179860/UD/RD/BD/115443520/reusable-bamboo-cutlery-set.jpg" alt="Bamboo Kitchen Utensils" />
+              <h4>Bamboo Kitchen Utensils</h4>
+              <p>₹ 399.00</p>
+              <button class="buy-button">Buy Now</button>
+            </div>
+            <div class="product-card">
+              <img src="https://earthbreeze.com/cdn/shop/files/EB_Product_Image03-FS-Classic.jpg?v=1715043774&width=64" alt="Eco-Friendly Detergent" />
+              <h4>Eco-Friendly Detergent</h4>
+              <p>₹ 349.00</p>
+              <button class="buy-button" onclick="window.open('https://www.sigmaaldrich.com/IN/en/product/sigma/ec700','_blank')" >Buy Now</button>
+            </div>
+            <div class="product-card">
+              <img src="https://5.imimg.com/data5/SELLER/Default/2023/3/295435883/KH/HW/FI/36982435/composable-biodegradable-bag-1000x1000.jpeg" alt="Compostable Trash Bags" />
+              <h4>Compostable Trash Bags</h4>
+              <p>₹ 150.00</p>
+              <button class="buy-button" onclick="window.open('https://www.indiamart.com/proddetail/100-composable-starch-bag-2850333596297.html','_blank')">Buy Now</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Educational Content Section -->
+      <section id="education">
+        <h2>Educational Content</h2>
+        <div class="education-content">
+          <article>
+            <h3>What Makes a Product Sustainable?</h3>
+            <p>
+              Sustainability in products can be measured through eco-friendly
+              materials, energy efficiency, fair labor practices, and waste
+              reduction in production. Learn more about what makes a product
+              truly sustainable.
+            </p>
+          </article>
+          <article>
+            <h3>The Environmental Impact of Fast Fashion</h3>
+            <p>
+              Fast fashion contributes significantly to pollution, waste, and
+              unethical labor practices. Learn about the alternatives and how
+              you can shop more responsibly in the fashion industry.
+            </p>
+          </article>
+          <article>
+            <h3>How to Reduce Your Carbon Footprint with Smart Purchases</h3>
+            <p>
+              Your purchasing decisions can make a difference. Learn how
+              choosing sustainable, energy-efficient products can help reduce
+              your carbon footprint and protect the environment.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Brand Spotlights Section -->
+      <section id="brands">
+        <h2>Brand Spotlights</h2>
+        <div class="brand-grid">
+          <div class="brand-card">
+            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/de72b7172220823.647b74e458aef.jpg" alt="EcoWear" />
+            <h3>EcoWear</h3>
+            <p>
+              EcoWear is committed to creating fashionable clothing made from
+              recycled materials.
+            </p>
+            <a href="#">Learn More</a>
+          </div>
+          <div class="brand-card">
+            <img src="https://sustainabilitynext.in/wp-content/uploads/2015/12/Green-Gadgets-A-savvy-green-guide-to-gadgets-for-a-sustainable-low-carbon-lifestyle.jpg" alt="GreenGadgets" />
+            <h3>GreenGadgets</h3>
+            <p>
+              GreenGadgets offers energy-efficient tech products with minimal
+              environmental impact.
+            </p>
+            <a href="#">Learn More</a>
+          </div>
+          <div class="brand-card">
+            <img src="https://www.conservingbeauty.com/cdn/shop/articles/Provenance_Press_Release.jpg?v=1664242067&width=2160" alt="Sustainable Living" />
+            <h3>Provanance</h3>
+            <p>
+              Sustainable Living provides eco-friendly home products for a
+              greener lifestyle.
+            </p>
+            <a href="#">Learn More</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Us Section -->
+      <section id="about">
+        <h2>About Us</h2>
+        <p>
+          EcoSearch is your go-to platform for discovering eco-friendly products
+          and brands that care for the planet. Our mission is to promote
+          sustainability by making it easy for you to find products that align
+          with your values.
+        </p>
+      </section>
+
+      <!-- User Activities Section -->
+      <section id="user-activities">
+        <h2>User Activities</h2>
+        <p>
+          Explore what other users are buying, reviewing, and adding to their
+          wishlists.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 EcoSearch. All rights reserved.</p>
+    </footer>
+
+    <script src="prototype4.js"></script>
+  </body>
+</html>
