@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "^/images/(.*)",
+      "dest": "/images/$1"
+    },
+    {
+      "src": "^/login/(.*)",
+      "dest": "/login/$1"
+    },
+    {
+      "src": "^/signup/(.*)",
+      "dest": "/signup/$1"
+    },
+    {
+      "src": "^/reset/(.*)",
+      "dest": "/reset/$1"
+    },
+    {
+      "src": "^/$",
+      "dest": "/prototype4.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}
