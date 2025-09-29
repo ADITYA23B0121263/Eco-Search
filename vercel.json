@@ -1,29 +1,27 @@
 {
   "version": 2,
+  "builds": [
+    {
+      "src": "**",
+      "use": "@vercel/static"
+    }
+  ],
   "routes": [
     {
-      "src": "^/images/(.*)",
-      "dest": "/images/$1"
-    },
-    {
-      "src": "^/login/(.*)",
-      "dest": "/login/$1"
-    },
-    {
-      "src": "^/signup/(.*)",
-      "dest": "/signup/$1"
-    },
-    {
-      "src": "^/reset/(.*)",
-      "dest": "/reset/$1"
-    },
-    {
-      "src": "^/$",
+      "src": "/",
       "dest": "/prototype4.html"
     },
     {
+      "src": "/images/(.*)",
+      "dest": "/images/$1"
+    },
+    {
+      "src": "/(.*)\\.(?:js|css|html|jpg|jpeg|png|webp|svg|ico)$",
+      "dest": "/$1.$2"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/$1"
+      "dest": "/prototype4.html"
     }
   ]
 }
